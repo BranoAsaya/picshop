@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>account</title>
+    <link rel="stylesheet" href="/style/index.css">
     <link rel="stylesheet" href="/style/account.css">
-    <script src="/js/account.js" defer></script>
+    <script src="/js/account.js"  defer></script>
 </head>
 <body>
     <header>
@@ -15,7 +16,7 @@
                 <ul class="menu" id="menuNav">
                     <li><a href="/index.html">Home</a></li>
                     <li><a href="./feature.html">Feature</a></li>
-                    <li><a href="./gallery.html">Gallery</a></li>
+                    <li><a href="./gallery.html" id="galleryLink">Gallery</a></li>
                     <li><a href="./contact.html">Contact</a></li>
                     <li class="btn-list-item">
                         <a href="#" class="btn btn-cart">
@@ -34,7 +35,9 @@
                         &#x1F6D2;
                         <!-- &#9332; -->
                     </a>
-                    <a href="./account.html" class="btn btn-log">Account</a>
+                    <a href="./account.html" class="btn btn-log">Account 
+                        <!-- &dArr; -->
+                    </a>
                 </div>
                 <button class="menu-btn" id="menu-btn" type="button">
                     &#8801;
@@ -45,7 +48,7 @@
             <div class="header-body">
                 
                 <div class="header-text">
-                    <div>
+                    <div class="account-section">
                         <h1 class="title" id="title">
 
                            PicShop <br> Account
@@ -65,8 +68,30 @@
          
                             </form>
                         </div> 
+                   
                         
                     </div>
+                    <div class="account-section">
+                        <h1 class="title">Account Management</h1>
+                        <p>
+                            Welcome to your PicShop account management section. Here you can update your information and preferences.
+                        </p>
+    
+                        <div class="account-container">
+                            <form>
+                                <input type="email" name="email" id="email2" placeholder="Email" class="input-field"  size="30" title="enter @picshop.com email" required>
+                                <input type="password" name="password" placeholder="Current Password" class="input-field" required>
+                                <input type="password" name="new-password" placeholder="New Password" class="input-field">
+                                <input type="password" name="confirm-password" placeholder="Confirm New Password" class="input-field">
+                                <input type="text" name="username" placeholder="Username" class="input-field">
+                                <input type="tel" name="phone" placeholder="Phone" class="input-field">
+                                <button type="submit" id="btn-update" class="btn btn-log" style="background-color: rgb(231, 156, 45);" disabled >Update Account</button>
+                                <button type="button" id="btn-logout" class="btn btn-log" style="background-color: rgb(241, 72, 72);" >Logout</button>
+                                <button type="button" id="btn-delete" class="btn" style="color: red;" disabled>Delete Account?</button>
+                            </form>
+                        </div> 
+                    </div>
+
                 </div>
               <div class="banner">
                 <img src="/images/banner-log.jpg" alt="banner" id="banner-img">

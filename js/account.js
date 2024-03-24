@@ -1,29 +1,54 @@
 const logInPage = document.getElementById('login-page')
 const inputField = document.getElementsByClassName('input-field')
 const textFill = document.getElementsByClassName('text-fill')
+const accountSection = document.getElementsByClassName('account-section')
 const btnSubmit = document.getElementById('btn-submit')
 const bannerImg = document.getElementById('banner-img')
 const title = document.getElementById('title')
-const usersDB = [{ email: "admin@picshop.com", password: "B4rfv5tgb" }]
-// let userLogIn = "{}"
+const galleryLink = document.getElementById('galleryLink')
+const btnLogOut = document.getElementById('btn-logout')
+let usersDB = [{ email: "admin@picshop.com", password: "B4rfv5tgb" ,username:"Boss",phone:"0"}]
+let user = "{}"
 let flag = true
 
-function updateDB() {}
+const menu = document.getElementById("menuNav")
+const menuBtn = document.getElementById("menu-btn")
+
+menuBtn.addEventListener("click", () => {
+    menu.classList.toggle("menu-open");
+})
+
+
+
+
+function updateDB() {
+    const usersArray = localStorage.getItem("usersDB")
+    const usersDBArrayString = JSON.stringify(usersDB)
+    if (usersArray) {
+        usersDB = JSON.parse(usersArray)
+    } else {
+        localStorage.setItem("usersDB", usersDBArrayString)
+        // localStorage.setItem("userObj", "{}")
+        // localStorage.setItem("picsDB", "{}")
+        // localStorage.setItem("picObj", "{}")
+    }
+
+} updateDB()
 
 function checkIfUserLogIn() {
-    const usersArray = localStorage.getItem("usersDB")
     const userObj = localStorage.getItem("userObj")
+
     if (userObj !== "{}" && userObj) {
+        accountSection[0].style.display = "none"
+        accountSection[1].style.display = "block"
         return userObj
-        
+
     } else {
-           localStorage.setItem("userObj", "{}")
-           localStorage.setItem("usersDB", "{}")
-           localStorage.setItem("picsDB", "{}")
-           localStorage.setItem("picObj", "{}")
-           return false
+        accountSection[0].style.display = "block"
+        accountSection[1].style.display = "none"    
+
     }
- 
+
 
 } checkIfUserLogIn()
 
@@ -31,39 +56,56 @@ function checkIfUserLogIn() {
 function userSignUp(usersArray, userObject) {
     const emailValid = userObject.email.match(".+@picshop\.com")
     const passwordValid = userObject.password.length > 5 ? true : false
-    const userObjString = JSON.stringify(userObject)
-    // const userObjParse = JSON.parse(userObjString)
-console.log("in userSignUp");
+
     if (emailValid && passwordValid) {
         const index = usersArray.findIndex(user => {
             return user.email === userObject.email
         })
         if (index < 0) {
             usersArray.push(userObject)
-            localStorage.setItem("userObj", userObjString)
-
-        } else { alert("PicShop Account already exists") }
+            const userObjTypeJSON = JSON.stringify(userObject)
+            const usersDBtypeJSON = JSON.stringify(usersArray)
+            localStorage.setItem("userObj", userObjTypeJSON)
+            localStorage.setItem("usersDB", usersDBtypeJSON)
+            checkIfUserLogIn()
+            galleryLink.click()
+            alert("welcome " + userObject.username)
+        } else {
+            inputField[0].value = ""
+            inputField[1].value = ""
+            inputField[2].value = ""
+            inputField[3].value = ""
+            alert("PicShop Account already exists")
+        }
     }
     else {
+        inputField[0].value = ""
+        inputField[1].value = ""
+        inputField[2].value = ""
+        inputField[3].value = ""
         alert("Please enter @picshop.com email and longer password")
     }
 
 }
 
 function userLogIn(usersArray, userObject) {
-    console.log("in userLogIn");
-    const userObjString = JSON.stringify(userObject)
+
     const index = usersArray.findIndex(user => {
         return user.email === userObject.email
     })
-     const passwordValid = usersArray[index].password === userObject.password 
-     console.log(passwordValid);
-
-    if (index !== -1) {
-        localStorage.setItem("userObj", userObjString)
-
+    const passwordValid = usersArray[index].password === userObject.password ? true : false
+    if (passwordValid) {
+        const userObjTypeJSON = JSON.stringify(userObject)
+        localStorage.setItem("userObj", userObjTypeJSON)
+        checkIfUserLogIn()
+        galleryLink.click()
+        alert("welcome " + userObject.username)
     } else { alert("problem userLogIn") }
 
+}
+
+function userLogOut() {
+    localStorage.setItem("userObj", false)
 }
 
 logInPage.addEventListener('click', (e) => {
@@ -84,18 +126,21 @@ btnSubmit.addEventListener('click', (e) => {
     e.preventDefault()
     const email = inputField[0].value
     const password = inputField[1].value
+    const username = inputField[2].value
+    const phone = inputField[3].value
     const BtnId = textFill[2].id
-    const newUser = { email, password }
-  
+    const newUser = { email, password, username, phone }
     if (BtnId === "SignUp") {
         userSignUp(usersDB, newUser)
     } else {
-        console.log("in");
         userLogIn(usersDB, newUser)
-        
     }
-
-    console.log(usersDB);
+}
+)
+btnLogOut.addEventListener('click', (e) => {
+    e.preventDefault()
+    localStorage.setItem("userObj", "{}")
+    checkIfUserLogIn()
 }
 )
 

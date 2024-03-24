@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gallery</title>
+    <link rel="stylesheet" href="/style/index.css">
     <link rel="stylesheet" href="/style/gallery.css">
+    
+    <script src="/js/gallery.js"  defer></script>
 </head>
 <body>
     <header>
@@ -43,14 +46,26 @@
 
             <div class="header-body">
                 
-                <div class="header-text">
-                   
-                </div>
-              <div class="banner">
-                <img src="/images/banner.png" alt="banner">
-            </div>
+           <div id="photo-grid"></div>
+           <dialog clo>This is an open dialog window</dialog>
+
+           <div id="gallery">
+
+           </div>
+           <div style="width: 100px; height: 100px; color: blue;" ></div>
+           <!-- <ul id="paginated-list" aria-live="polite">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            ...
+          </ul> -->
         </div>
-          
+        <dialog id="dialog">
+            <img src="" alt="Popup photo" id="popUpImg" >
+            <p>This modal dialog has a groovy backdrop!</p>
+            <button class="btn btn-log" id="btn-close">Close</button>
+          </dialog>
+         
         </div>
     </div> 
 </header>
