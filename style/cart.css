@@ -1,11 +1,133 @@
 body{
     background:#ffffff
  }
+ .header-body{
+   grid-template-columns:1fr;
+ }
  
-   
-    
+ #product-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+.product-image {
+  width: 100%;
+  height: 50%; 
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.product-info {
+  padding: 15px;
+}
+
+.product-info h3 {
+  color: #1b2430;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.product-info p {
+  color: #b3bac3;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.product-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.product-details p {
+  margin: 0;
+}
+
+.remove-btn {
+  width: 100%;
+  height: 40px;
+  color: #fff;
+  background-color: #1b2430;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background-color: #aa0000;
+}
+.add-product-div{
+width: 14em;
+
+}
+.payment {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  margin: 30px
+}
+
+.payment h2 {
+  color: #1b2430;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.payment form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  transition: 0.5s;
+
+}
+
+.payment label {
+  color: #1b2430;
+  font-size: 16px;
+}
+
+.payment input {
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.pay-button ,.add-products-button{
+  width: 100%;
+  height: 40px;
+  color: #fff;
+  background-color: #1b2430;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.add-products-button a{
+  color: #fff;
+}
+.pay-button:hover ,.add-products-button:hover{
+  background-color: #58aa00;
+}
+  
     @media screen and (max-width: 1000px) {
-     
+      #product-container {
+        
+        grid-template-columns: 1fr;
+      
+      }
         
     }
     

@@ -16,14 +16,11 @@
                 <a href="/index.html" class="brand">PicShop</a>
                 <ul class="menu" id="menuNav">
                     <li><a href="/index.html">Home</a></li>
-                    <li><a href="./feature.html">Feature</a></li>
                     <li><a href="./gallery.html">Gallery</a></li>
                     <li><a href="./contact.html">Contact</a></li>
                     <li class="btn-list-item">
                         <a href="#" class="btn btn-cart">
                          &#x1F6D2;
-                         <!-- &#9332; -->
-                        </a>
                     </li>
                     <li class="btn-list-item">
                         <a href="./account.html" class="btn btn-log">
@@ -34,7 +31,7 @@
                 <div class="buttons">
                     <a href="./cart.html" class="btn btn-cart">
                         &#x1F6D2;
-                        <!-- &#9332; -->
+                        <span id="cart-count"></span></a>
                     </a>
                     <a href="./account.html" class="btn btn-log">Account</a>
                 </div>
@@ -49,25 +46,32 @@
            <div id="photo-grid"></div>
            <dialog clo>This is an open dialog window</dialog>
 
-           <div id="gallery">
-
-           </div>
+           <div id="gallery"></div>
            <div style="width: 100px; height: 100px; color: blue;" ></div>
-           <!-- <ul id="paginated-list" aria-live="polite">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            ...
-          </ul> -->
+           <div class="pagination">
+            <!-- class="active" -->
+            <a href="" class="page-number" >&laquo;</a>
+            <a href="" class="page-number" id="page-1">1</a>
+            <a href="" class="page-number"id="page-2" >2</a>
+            <a href="" class="page-number" id="page-3">3</a>
+            <a href="" class="page-number" id="page-4">4</a>
+            <a href="" class="page-number" id="page-5">5</a>
+            <a href="" class="page-number" id="page-6">6</a>
+            <a href="" class="page-number" >&raquo;</a>
+          </div>
         </div>
         <dialog id="dialog">
             <img src="" alt="Popup photo" id="popUpImg" >
-            <p>This modal dialog has a groovy backdrop!</p>
-            <button class="btn btn-log" id="btn-close">Close</button>
-          </dialog>
+            <div class="btn-dialog">
+               <button class="btn btn-log" id="btn-close" style="background-color:brown">&#9932;</button>
+               <p id="artist-name"></p>
+            <button class="btn btn-log" id="btn-add" style="background-color:limegreen">&#128722;</button>  
+            </div>           
+        </dialog>
          
         </div>
     </div> 
+    
 </header>
 
 <footer>

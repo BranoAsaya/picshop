@@ -28,9 +28,7 @@ function updateDB() {
         usersDB = JSON.parse(usersArray)
     } else {
         localStorage.setItem("usersDB", usersDBArrayString)
-        // localStorage.setItem("userObj", "{}")
-        // localStorage.setItem("picsDB", "{}")
-        // localStorage.setItem("picObj", "{}")
+
     }
 
 } updateDB()
@@ -65,7 +63,7 @@ function userSignUp(usersArray, userObject) {
             usersArray.push(userObject)
             const userObjTypeJSON = JSON.stringify(userObject)
             const usersDBtypeJSON = JSON.stringify(usersArray)
-            localStorage.setItem("userObj", userObjTypeJSON)
+             localStorage.setItem("userObj", userObjTypeJSON)
             localStorage.setItem("usersDB", usersDBtypeJSON)
             checkIfUserLogIn()
             galleryLink.click()
@@ -143,4 +141,5 @@ btnLogOut.addEventListener('click', (e) => {
     checkIfUserLogIn()
 }
 )
+
 
