@@ -2,6 +2,7 @@ const galleryGrid = document.getElementById("photo-grid")
 const dialog = document.getElementById("dialog")
 const popUpImg = document.getElementById("popUpImg")
 const artistName = document.getElementById("artist-name")
+const picPrice = document.getElementById('pic-price')
 const btnClose = document.getElementById("btn-close")
 const btnAdd = document.getElementById("btn-add")
 const picsDBtypeJSON = localStorage.getItem("picsDB")
@@ -14,7 +15,7 @@ const imgFrame = document.getElementsByClassName("gallery-img")
 const pageNumber = document.getElementsByClassName("page-number")
 const btnCart = document.getElementsByClassName("btn-cart")
 const cartCount = document.getElementById('cart-count')
-const cartItem = { url: '', name: '' }
+const cartItem = { url: '', name: '' ,price:''}
 const arrayCart = cartDB || []
 let min = -1
 let max = 10
@@ -29,6 +30,7 @@ menuBtn.addEventListener("click", () => {
 
 
 function createPhotosElements(data, tag) {
+    
     const photos = data
     const fragment = new DocumentFragment()
     let index = 0
@@ -41,7 +43,7 @@ function createPhotosElements(data, tag) {
         img.src = photos[i].download_url
         img.className = "gallery-img img"
         img.name = photos[i].author
-        img.alt = `Gallery image ${i}`
+        img.alt = `Gallery-image-${i}-${photos[i].width}`
         img.loading = "lazy"
         img.addEventListener("load", () => {
             img.classList.add('loaded')
@@ -60,15 +62,16 @@ createPhotosElements(picsDB, gallery)
 btnClose.addEventListener('click', () => {
     dialog.close()
 })
+
+
 btnAdd.addEventListener('click', () => {
-    console.log(cartCount);
 
     btnAdd.style = "background-color: #4CfFD0;"
     const index = arrayCart.findIndex(item => {
         return item.url === cartItem.url
     })
     if (index < 0) {
-        arrayCart.push({ url: cartItem.url, name: cartItem.name })
+        arrayCart.push({ url: cartItem.url, name: cartItem.name ,price:cartItem.price})
         cartCount.textContent = arrayCart.length
         btnCart[1].style = "background-color:limegreen; border-radius: 5px;"
         localStorage.setItem('cartDB', JSON.stringify(arrayCart))
@@ -76,6 +79,8 @@ btnAdd.addEventListener('click', () => {
     setTimeout(() => btnAdd.style = "background-color:limegreen", 1000)
 
 })
+
+
 setTimeout(() => userObjJSON === '{}' ? alert("please log-in") : "", 1000)
 
 
@@ -98,13 +103,16 @@ filterImagesByRange()
 
 
 function dialogHandler() {
+
     for (let i = 0; i < gallery.childNodes.length; i++) {
         gallery.childNodes[i].addEventListener('click', () => {
-            dialog.showModal()
             popUpImg.src = gallery.childNodes[i].childNodes[0].currentSrc
             artistName.textContent = gallery.childNodes[i].childNodes[0].name
+            picPrice.textContent =gallery.childNodes[i].childNodes[0].alt.slice(16)
             cartItem.url = popUpImg.src
             cartItem.name = artistName.textContent
+            cartItem.price = picPrice.textContent
+            dialog.showModal()
         })
 
     }

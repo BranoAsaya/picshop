@@ -19,8 +19,6 @@ menuBtn.addEventListener("click", () => {
 })
 
 
-
-
 function updateDB() {
     const usersArray = localStorage.getItem("usersDB")
     const usersDBArrayString = JSON.stringify(usersDB)
@@ -32,6 +30,7 @@ function updateDB() {
     }
 
 } updateDB()
+
 
 function checkIfUserLogIn() {
     const userObj = localStorage.getItem("userObj")
@@ -86,6 +85,7 @@ function userSignUp(usersArray, userObject) {
 
 }
 
+
 function userLogIn(usersArray, userObject) {
 
     const index = usersArray.findIndex(user => {
@@ -102,9 +102,11 @@ function userLogIn(usersArray, userObject) {
 
 }
 
+
 function userLogOut() {
     localStorage.setItem("userObj", false)
 }
+
 
 logInPage.addEventListener('click', (e) => {
     e.preventDefault()
@@ -119,6 +121,7 @@ logInPage.addEventListener('click', (e) => {
     textFill[2].id = flag ? "LogIn" : "SignUp"
     flag = flag ? false : true
 })
+
 
 btnSubmit.addEventListener('click', (e) => {
     e.preventDefault()
@@ -135,6 +138,8 @@ btnSubmit.addEventListener('click', (e) => {
     }
 }
 )
+
+
 btnLogOut.addEventListener('click', (e) => {
     e.preventDefault()
     localStorage.setItem("userObj", "{}")
